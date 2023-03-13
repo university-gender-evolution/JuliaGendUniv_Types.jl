@@ -2,7 +2,7 @@
 
 julia_version = "1.8.3"
 manifest_format = "2.0"
-project_hash = "c2b7f7f6489b69cbeca037eeeecea303e26c2446"
+project_hash = "af027ccf756f0c52dfaa1944890466651c85dfc1"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra", "Requires"]
@@ -270,6 +270,11 @@ version = "1.10.0"
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[[deps.TestItems]]
+git-tree-sha1 = "8621ba2637b49748e2dc43ba3d84340be2938022"
+uuid = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
+version = "0.1.1"
 
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
