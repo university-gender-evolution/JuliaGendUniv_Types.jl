@@ -6,11 +6,11 @@ DocMeta.setdocmeta!(JuliaGendUniv_Types, :DocTestSetup, :(using JuliaGendUniv_Ty
 makedocs(;
     modules=[JuliaGendUniv_Types],
     authors="Krishna Bhogaonker",
-    repo="https://github.com/00krishna/JuliaGendUniv_Types.jl/blob/{commit}{path}#{line}",
+    repo="https://github.com/university-gender-evolution/JuliaGendUniv_Types/blob/{commit}{path}#{line}",
     sitename="JuliaGendUniv_Types.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://00krishna.github.io/JuliaGendUniv_Types.jl",
+        canonical="https://github.com/university-gender-evolution/JuliaGendUniv_Types",
         edit_link="main",
         assets=String[],
     ),
@@ -20,6 +20,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/00krishna/JuliaGendUniv_Types.jl",
+    repo="github.com/university-gender-evolution/JuliaGendUniv_Types",
     devbranch="main",
 )
