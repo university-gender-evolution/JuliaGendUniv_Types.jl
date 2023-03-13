@@ -1,5 +1,15 @@
 module JuliaGendUniv_Types
 
-# Write your package code here.
+
+
+using DataFrames
+using ComponentArrays
+
+include("PreprocessingTypes.jl");
+#include("OptimizationTypes.jl");
+
+
+# export optimize_data
+
 
 end

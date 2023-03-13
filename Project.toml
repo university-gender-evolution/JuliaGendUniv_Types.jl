@@ -3,6 +3,10 @@ uuid = "603251c8-9ed4-4db3-9104-3e0302b27083"
 authors = ["Krishna Bhogaonker"]
 version = "0.1.0"
 
+[deps]
+ComponentArrays = "b0b7db55-cfe3-40fc-9ded-d10e2dbeff66"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+
 [compat]
 julia = "1.8"
 
