@@ -9,7 +9,7 @@ include("PreprocessingTypes.jl");
 #include("OptimizationTypes.jl");
 
 
-# export optimize_data
+#export optimize_data
 
 
 end

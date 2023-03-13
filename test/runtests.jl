@@ -10,9 +10,9 @@ using TestItems
     cd(@__DIR__)
     @show pwd()
     
-    @test UM() isa JuliaGendUniv_Types.AbstractGendUnivDataConfiguration 
-    @test DataAudit() isa JuliaGendUniv_Types.AbstractDataChecks
-    @test NoAudit() isa JuliaGendUniv_Types.AbstractDataChecks
+    @test JuliaGendUniv_Types.UM() isa JuliaGendUniv_Types.AbstractGendUnivDataConfiguration 
+    @test JuliaGendUniv_Types.DataAudit() isa JuliaGendUniv_Types.AbstractDataChecks
+    @test JuliaGendUniv_Types.NoAudit() isa JuliaGendUniv_Types.AbstractDataChecks
     
 end
 
