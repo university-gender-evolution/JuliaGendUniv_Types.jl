@@ -29,7 +29,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install curl package
         run: |
-          sudo apt-get install -y curl python3-pycurl libcurl4-openssl-dev
+          sudo apt-get update
+          sudo apt install -y curl python3-pycurl libcurl4-openssl-dev
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
