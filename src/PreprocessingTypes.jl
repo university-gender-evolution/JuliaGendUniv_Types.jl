@@ -85,7 +85,8 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
                 :act_mattr2, :act_mattr3, :act_fprom1, :act_fprom2, :act_mprom1, 
                 :act_mprom2, :act_deptn, :act_hire, :act_f, :act_m, :act_fpct,
                 :act_mpct, :act_deptname, :act_normf1, :act_normf2, :act_normf3,
-                :act_normm1, :act_normm2, :act_normm3]
+                :act_normm1, :act_normm2, :act_normm3, :act_norm_f, :act_norm_m, 
+                :act_norm_deptn]
 
     valid_assistants = ["ASST PROFESSOR", "CLINICAL ASST PROF II", 
                         "CLINICAL ASST PROF", 
