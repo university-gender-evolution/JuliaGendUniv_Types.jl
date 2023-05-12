@@ -103,19 +103,25 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
                         "RESEARCH PROFESSOR EMERITUS/A", "CLIN PROF EMERITUS/A"]
 
 
-    data_cols = [:act_f1, :act_f2, :act_f3, :act_m1, :act_m2, :act_m3]
-    spline_cols = [:spline_f1, :spline_f2, :spline_f3, :spline_m1, :spline_m2, :spline_m3]
-    boot_cols = [:boot_f1, :boot_f2, :boot_f3, :boot_m1, :boot_m2, :boot_m3]
-    optimization_cols = [:opt_f1, :opt_f2, :opt_f3, :opt_m1, :opt_m2, :opt_m3]
+    data_cols = [:act_f1, :act_f2, :act_f3, :act_m1, :act_m2, :act_m3, :act_f, :act_m, :act_deptn]
+    spline_cols = [:spline_f1, :spline_f2, :spline_f3, :spline_m1, :spline_m2, :spline_m3, :spline_f, :spline_m, :spline_deptn]
+    boot_cols = [:boot_f1, :boot_f2, :boot_f3, :boot_m1, :boot_m2, :boot_m3, :boot_f, :boot_m, :boot_deptn]
+    optimization_cols = [:opt_f1, :opt_f2, :opt_f3, :opt_m1, :opt_m2, :opt_m3, :opt_f, :opt_m, :opt_deptn]
 
     spline_deriv_cols = [:spline_deriv_f1, :spline_deriv_f2, :spline_deriv_f3, :spline_deriv_m1,
-                    :spline_deriv_m2, :spline_deriv_m3]
+                    :spline_deriv_m2, :spline_deriv_m3, :spline_deriv_f, :spline_deriv_m,
+                    :spline_deriv_deptn]
 
     boot_deriv_cols = [:boot_deriv_f1, :boot_deriv_f2, :boot_deriv_f3, :boot_deriv_m1,
-                    :boot_deriv_m2, :boot_deriv_m3]
+                    :boot_deriv_m2, :boot_deriv_m3, :boot_deriv_f, :boot_deriv_m,
+                    :boot_deriv_deptn]
 
-    boot_norm_cols = [:boot_norm_f1, :boot_norm_f2, :boot_norm_f3, :boot_norm_m1, :boot_norm_m2, :boot_norm_m3]
-    spline_norm_cols = [:spline_norm_f1, :spline_norm_f2, :spline_norm_f3, :spline_norm_m1, :spline_norm_m2, :spline_norm_m3]
+    boot_norm_cols = [:boot_norm_f1, :boot_norm_f2, :boot_norm_f3, :boot_norm_m1, 
+                    :boot_norm_m2, :boot_norm_m3, :boot_norm_f, :boot_norm_m, 
+                    :boot_norm_deptn]
+    spline_norm_cols = [:spline_norm_f1, :spline_norm_f2, :spline_norm_f3, 
+                    :spline_norm_m1, :spline_norm_m2, :spline_norm_m3, 
+                    :spline_norm_f, :spline_norm_m, :spline_norm_deptn]
     u0_cols = [:u0_act_unnormalized, :u0_act_bootnorm, :u0_act_splinenorm, :u0_boot_bootnorm, :u0_spline_splinenorm]
     u0_df = DataFrame(zeros(6, length(u0_cols)), u0_cols)    
 
