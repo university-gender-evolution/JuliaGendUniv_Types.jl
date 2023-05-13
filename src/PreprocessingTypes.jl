@@ -86,7 +86,9 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
                 :act_mprom2, :act_deptn, :act_hire, :act_f, :act_m, :act_fpct,
                 :act_mpct, :act_deptname, :act_normf1, :act_normf2, :act_normf3,
                 :act_normm1, :act_normm2, :act_normm3, :act_norm_f, :act_norm_m, 
-                :act_norm_deptn]
+                :act_norm_deptn, :act_ynorm_f1, :act_ynorm_f2, :act_ynorm_f3,
+                :act_ynorm_m1, :act_ynorm_m2, :act_ynorm_m3, :act_ynorm_f, 
+                :act_ynorm_m]
 
     valid_assistants = ["ASST PROFESSOR", "CLINICAL ASST PROF II", 
                         "CLINICAL ASST PROF", 
@@ -119,10 +121,15 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
 
     boot_norm_cols = [:boot_norm_f1, :boot_norm_f2, :boot_norm_f3, :boot_norm_m1, 
                     :boot_norm_m2, :boot_norm_m3, :boot_norm_f, :boot_norm_m, 
-                    :boot_norm_deptn]
+                    :boot_norm_deptn, :boot_ynorm_f1, :boot_ynorm_f2, :boot_ynorm_f3, 
+                    :boot_ynorm_m1, :boot_ynorm_m2, :boot_ynorm_m3, :boot_ynorm_f, :boot_ynorm_m
+                    ]
     spline_norm_cols = [:spline_norm_f1, :spline_norm_f2, :spline_norm_f3, 
                     :spline_norm_m1, :spline_norm_m2, :spline_norm_m3, 
-                    :spline_norm_f, :spline_norm_m, :spline_norm_deptn]
+                    :spline_norm_f, :spline_norm_m, :spline_norm_deptn,
+                    :spline_ynorm_f1, :spline_ynorm_f2, :spline_ynorm_f3, 
+                    :spline_ynorm_m1, :spline_ynorm_m2, :spline_ynorm_m3, 
+                    :spline_ynorm_f, :spline_ynorm_m]
     u0_cols = [:u0_act_unnormalized, :u0_act_bootnorm, :u0_act_splinenorm, :u0_boot_bootnorm, :u0_spline_splinenorm]
     u0_df = DataFrame(zeros(6, length(u0_cols)), u0_cols)    
 
