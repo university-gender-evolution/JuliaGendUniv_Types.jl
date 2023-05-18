@@ -36,14 +36,19 @@ growth_rate_linear = 0.01);
 
 
 mutable struct DeptClusterData
-    cluster_vector_detail_norm::Vector{Float64}
-    cluster_vector_detail_ynorm::Vector{Float64}
     cluster_vector_agg_norm::Vector{Float64}
     cluster_vector_agg_ynorm::Vector{Float64}
-end
+    cluster_vector_detail_norm::Vector{Float64}
+    cluster_vector_detail_ynorm::Vector{Float64}
+    cluster_vector_spline_agg_norm::Vector{Float64}
+    cluster_vector_spline_agg_ynorm::Vector{Float64}
+    cluster_vector_spline_detail_norm::Vector{Float64}
+    cluster_vector_spline_detail_ynorm::Vector{Float64}
+end;
 
 function DeptClusterData()
-    return DeptClusterData(Float64[], Float64[], Float64[], Float64[])
+    return DeptClusterData(Float64[], Float64[], Float64[], Float64[], 
+                            Float64[], Float64[], Float64[], Float64) 
 end
 
 
