@@ -35,6 +35,18 @@ rprom_m3 = 0.00,
 growth_rate_linear = 0.01);
 
 
+mutable struct DeptClusterData
+    cluster_vector_detail_norm::Vector{Float64}
+    cluster_vector_detail_ynorm::Vector{Float64}
+    cluster_vector_agg_norm::Vector{Float64}
+    cluster_vector_agg_ynorm::Vector{Float64}
+end
+
+function DeptClusterData()
+    return DeptClusterData(Float[], Float[], Float[], Float[])
+end
+
+
 mutable struct UMDeptData
     raw_df::DataFrame
     processed_data::DataFrame
@@ -43,6 +55,7 @@ mutable struct UMDeptData
     dept_rates::Dict{Symbol, Float64}
     dept_name::String
     cluster_vector::Vector{Float64}
+    cluster_data::DeptClusterData
     _column_names::Vector{Symbol}
     _prof_entry_exit::DataFrame
     _prof_ids::Vector{Float32}
@@ -145,6 +158,7 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
             Dict{Symbol, Float64}(),
             "",
             Float64[],
+            DeptClusterData(),
             column_names, 
             DataFrame(),
             Int16[], 
@@ -180,6 +194,30 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
 end;
 
 
+mutable struct ClusteringResult
+    centers::Vector{Int64}
+    assignments::Vector{Int64}
+    _graph::Dict
+end;
+
+
+function ClusteringResult()
+    return ClusteringResult(Int64[], Int64[], Dict())
+end;
+
+mutable struct UnivClusterData
+    spectral_clustering::ClusteringResult
+    tsne_clustering::ClusteringResult
+    optimal_clustering::ClusteringResult
+end;
+
+
+function UnivClusterData()
+    return UnivClusterData(ClusteringResult(), ClusteringResult(), ClusteringResult())
+end;
+
+
+
 mutable struct UMData <: GendUnivData
     _file_path::String
     _raw_df::DataFrame
@@ -195,6 +233,7 @@ mutable struct UMData <: GendUnivData
     dept_data_vector::Vector{UMDeptData}
     univ_sindy_matrix::Matrix{Float64}
     univ_bootstrap_df::DataFrame
+    clustering_data::UnivClusterData
 end;
 
 function UMData(file_path::String, df::DataFrame) 
@@ -212,7 +251,8 @@ function UMData(file_path::String, df::DataFrame)
                     DataFrame(),
                     UMDeptData[],
                     Matrix(rand(2,2)),
-                    DataFrame()
+                    DataFrame(),
+                    UnivClusterData()
     )
 end;
 
