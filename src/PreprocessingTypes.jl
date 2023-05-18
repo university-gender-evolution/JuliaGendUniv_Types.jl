@@ -211,8 +211,8 @@ mutable struct ClusteringData
     cluster_matrix_spline_agg_ynorm::Matrix{Float64}
     cluster_matrix_spline_detail_norm::Matrix{Float64}
     cluster_matrix_spline_detail_ynorm::Matrix{Float64}
-    cluster_matrix_act_deptn::Matrix{Float64}
-    cluster_matrix_spline_deptn::Matrix{Float64}
+    cluster_matrix_act_norm_deptn::Matrix{Float64}
+    cluster_matrix_spline_norm_deptn::Matrix{Float64}
 end;
 
 function ClusteringData()
