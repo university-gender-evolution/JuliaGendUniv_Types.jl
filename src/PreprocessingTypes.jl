@@ -44,11 +44,14 @@ mutable struct DeptClusterData
     cluster_vector_spline_agg_ynorm::Vector{Float64}
     cluster_vector_spline_detail_norm::Vector{Float64}
     cluster_vector_spline_detail_ynorm::Vector{Float64}
+    cluster_vector_act_deptn::Vector{Float64}
+    cluster_vector_spline_deptn::Vector{Float64}
 end;
 
 function DeptClusterData()
     return DeptClusterData(Float64[], Float64[], Float64[], Float64[], 
-                            Float64[], Float64[], Float64[], Float64[]) 
+                            Float64[], Float64[], Float64[], Float64[],
+                            Float64[], Float64[]) 
 end
 
 
@@ -199,6 +202,27 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
 end;
 
 
+mutable struct ClusteringData
+    cluster_matrix_agg_norm::Matrix{Float64}
+    cluster_matrix_agg_ynorm::Matrix{Float64}
+    cluster_matrix_detail_norm::Matrix{Float64}
+    cluster_matrix_detail_ynorm::Matrix{Float64}
+    cluster_matrix_spline_agg_norm::Matrix{Float64}
+    cluster_matrix_spline_agg_ynorm::Matrix{Float64}
+    cluster_matrix_spline_detail_norm::Matrix{Float64}
+    cluster_matrix_spline_detail_ynorm::Matrix{Float64}
+    cluster_matrix_act_deptn::Matrix{Float64}
+    cluster_matrix_spline_deptn::Matrix{Float64}
+end;
+
+function ClusteringData()
+    return ClusteringData(Matrix(rand(2,2)), Matrix(rand(2,2)),
+                            Matrix(rand(2,2)), Matrix(rand(2,2)),
+                            Matrix(rand(2,2)), Matrix(rand(2,2)),
+                            Matrix(rand(2,2)), Matrix(rand(2,2)),
+                            Matrix(rand(2,2)), Matrix(rand(2,2)))
+end;
+
 mutable struct ClusteringResult
     centers::Vector{Int64}
     assignments::Vector{Int64}
@@ -210,14 +234,14 @@ function ClusteringResult()
     return ClusteringResult(Int64[], Int64[], Dict())
 end;
 
-mutable struct UnivClusterData
+mutable struct UnivClusterResults
     spectral_clustering::ClusteringResult
     tsne_clustering::ClusteringResult
     optimal_clustering::ClusteringResult
 end;
 
 
-function UnivClusterData()
+function UnivClusterResults()
     return UnivClusterData(ClusteringResult(), ClusteringResult(), ClusteringResult())
 end;
 
@@ -238,7 +262,8 @@ mutable struct UMData <: GendUnivData
     dept_data_vector::Vector{UMDeptData}
     univ_sindy_matrix::Matrix{Float64}
     univ_bootstrap_df::DataFrame
-    clustering_data::UnivClusterData
+    clustering_data::ClusteringData
+    clustering_results::UnivClusterData
 end;
 
 function UMData(file_path::String, df::DataFrame) 
@@ -257,6 +282,7 @@ function UMData(file_path::String, df::DataFrame)
                     UMDeptData[],
                     Matrix(rand(2,2)),
                     DataFrame(),
+                    ClusteringData(),
                     UnivClusterData()
     )
 end;
