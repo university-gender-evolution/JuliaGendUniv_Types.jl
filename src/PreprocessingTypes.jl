@@ -43,7 +43,7 @@ mutable struct DeptClusterData
 end
 
 function DeptClusterData()
-    return DeptClusterData(Float[], Float[], Float[], Float[])
+    return DeptClusterData(Float64[], Float64[], Float64[], Float64[])
 end
 
 
