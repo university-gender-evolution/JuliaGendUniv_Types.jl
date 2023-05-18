@@ -44,8 +44,8 @@ mutable struct DeptClusterData
     cluster_vector_spline_agg_ynorm::Vector{Float64}
     cluster_vector_spline_detail_norm::Vector{Float64}
     cluster_vector_spline_detail_ynorm::Vector{Float64}
-    cluster_vector_act_deptn::Vector{Float64}
-    cluster_vector_spline_deptn::Vector{Float64}
+    cluster_vector_act_norm_deptn::Vector{Float64}
+    cluster_vector_spline_norm_deptn::Vector{Float64}
 end;
 
 function DeptClusterData()
