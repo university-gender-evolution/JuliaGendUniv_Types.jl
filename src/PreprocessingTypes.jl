@@ -48,7 +48,7 @@ end;
 
 function DeptClusterData()
     return DeptClusterData(Float64[], Float64[], Float64[], Float64[], 
-                            Float64[], Float64[], Float64[], Float64) 
+                            Float64[], Float64[], Float64[], Float64[]) 
 end
 
 
