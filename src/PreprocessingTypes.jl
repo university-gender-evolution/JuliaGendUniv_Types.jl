@@ -242,7 +242,7 @@ end;
 
 
 function UnivClusterResults()
-    return UnivClusterData(ClusteringResult(), ClusteringResult(), ClusteringResult())
+    return UnivClusterResults(ClusteringResult(), ClusteringResult(), ClusteringResult())
 end;
 
 
@@ -263,7 +263,7 @@ mutable struct UMData <: GendUnivData
     univ_sindy_matrix::Matrix{Float64}
     univ_bootstrap_df::DataFrame
     clustering_data::ClusteringData
-    clustering_results::UnivClusterData
+    clustering_results::UnivClusterResults
 end;
 
 function UMData(file_path::String, df::DataFrame) 
@@ -283,7 +283,7 @@ function UMData(file_path::String, df::DataFrame)
                     Matrix(rand(2,2)),
                     DataFrame(),
                     ClusteringData(),
-                    UnivClusterData()
+                    UnivClusterResults()
     )
 end;
 
