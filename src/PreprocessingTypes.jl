@@ -224,14 +224,17 @@ function ClusteringData()
 end;
 
 mutable struct ClusterResult
+    num_clusters::Int
+    cluster_sizes::Vector{Int}
+    weighted_cluster_sizes::Vector{Float64}
     centers::Vector{Int64}
-    assignments::Vector{Int64}
+    assignments::Vector{Int}
     _graph::Dict
 end;
 
 
 function ClusterResult()
-    return ClusterResult(Int64[], Int64[], Dict())
+    return ClusterResult(-1, Int64[], Float64[], Int64[], Int64[], Dict())
 end;
 
 mutable struct ClusterGroup
