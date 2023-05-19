@@ -234,15 +234,37 @@ function ClusteringResult()
     return ClusteringResult(Int64[], Int64[], Dict())
 end;
 
+mutable struct ClusterGroup
+    aggregated_norm::ClusteringResult
+    aggregated_ynorm::ClusteringResult
+    detail_norm::ClusteringResult
+    detail_ynorm::ClusteringResult
+    spline_aggregated_norm::ClusteringResult
+    spline_aggregated_ynorm::ClusteringResult
+    spline_detail_norm::ClusteringResult
+    spline_detail_ynorm::ClusteringResult
+    act_norm_deptn::ClusteringResult
+    spline_norm_deptn::ClusteringResult
+end;
+
+
+function ClusterGroup()
+    return ClusterGroup(ClusteringResult(), ClusteringResult(),
+                        ClusteringResult(), ClusteringResult(),
+                        ClusteringResult(), ClusteringResult(),
+                        ClusteringResult(), ClusteringResult(),
+                        ClusteringResult(), ClusteringResult())
+end;
+
 mutable struct UnivClusterResults
-    spectral_clustering::ClusteringResult
-    tsne_clustering::ClusteringResult
-    optimal_clustering::ClusteringResult
+    spectral_clustering::ClusterGroup
+    tsne_clustering::ClusterGroup
+    optimal_clustering::ClusterGroup
 end;
 
 
 function UnivClusterResults()
-    return UnivClusterResults(ClusteringResult(), ClusteringResult(), ClusteringResult())
+    return UnivClusterResults(ClusterGroup(), ClusterGroup(), ClusterGroup())
 end;
 
 
