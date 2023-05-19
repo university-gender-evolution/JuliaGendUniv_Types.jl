@@ -223,37 +223,37 @@ function ClusteringData()
                             Matrix(rand(2,2)), Matrix(rand(2,2)))
 end;
 
-mutable struct ClusteringResult
+mutable struct ClusterResult
     centers::Vector{Int64}
     assignments::Vector{Int64}
     _graph::Dict
 end;
 
 
-function ClusteringResult()
-    return ClusteringResult(Int64[], Int64[], Dict())
+function ClusterResult()
+    return ClusterResult(Int64[], Int64[], Dict())
 end;
 
 mutable struct ClusterGroup
-    aggregated_norm::ClusteringResult
-    aggregated_ynorm::ClusteringResult
-    detail_norm::ClusteringResult
-    detail_ynorm::ClusteringResult
-    spline_aggregated_norm::ClusteringResult
-    spline_aggregated_ynorm::ClusteringResult
-    spline_detail_norm::ClusteringResult
-    spline_detail_ynorm::ClusteringResult
-    act_norm_deptn::ClusteringResult
-    spline_norm_deptn::ClusteringResult
+    aggregated_norm::ClusterResult
+    aggregated_ynorm::ClusterResult
+    detail_norm::ClusterResult
+    detail_ynorm::ClusterResult
+    spline_aggregated_norm::ClusterResult
+    spline_aggregated_ynorm::ClusterResult
+    spline_detail_norm::ClusterResult
+    spline_detail_ynorm::ClusterResult
+    act_norm_deptn::ClusterResult
+    spline_norm_deptn::ClusterResult
 end;
 
 
 function ClusterGroup()
-    return ClusterGroup(ClusteringResult(), ClusteringResult(),
-                        ClusteringResult(), ClusteringResult(),
-                        ClusteringResult(), ClusteringResult(),
-                        ClusteringResult(), ClusteringResult(),
-                        ClusteringResult(), ClusteringResult())
+    return ClusterGroup(ClusterResult(), ClusterResult(),
+                        ClusterResult(), ClusterResult(),
+                        ClusterResult(), ClusterResult(),
+                        ClusterResult(), ClusterResult(),
+                        ClusterResult(), ClusterResult())
 end;
 
 mutable struct UnivClusterResults
