@@ -260,6 +260,9 @@ function ClusterGroup()
 end;
 
 mutable struct UnivClusterResults
+    kmeans::ClusterGroup
+    hierarchical_clustering::ClusterGroup
+    dbscan_clustering::ClusterGroup
     spectral_clustering::ClusterGroup
     tsne_clustering::ClusterGroup
     optimal_clustering::ClusterGroup
@@ -267,7 +270,12 @@ end;
 
 
 function UnivClusterResults()
-    return UnivClusterResults(ClusterGroup(), ClusterGroup(), ClusterGroup())
+    return UnivClusterResults(ClusterGroup(), 
+                                ClusterGroup(), 
+                                ClusterGroup(), 
+                                ClusterGroup(), 
+                                ClusterGroup(), 
+                                ClusterGroup())
 end;
 
 
