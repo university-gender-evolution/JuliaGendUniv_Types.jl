@@ -202,83 +202,78 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
 end;
 
 
-mutable struct ClusteringData
-    cluster_matrix_agg_norm::Matrix{Float64}
-    cluster_matrix_agg_ynorm::Matrix{Float64}
-    cluster_matrix_detail_norm::Matrix{Float64}
-    cluster_matrix_detail_ynorm::Matrix{Float64}
-    cluster_matrix_spline_agg_norm::Matrix{Float64}
-    cluster_matrix_spline_agg_ynorm::Matrix{Float64}
-    cluster_matrix_spline_detail_norm::Matrix{Float64}
-    cluster_matrix_spline_detail_ynorm::Matrix{Float64}
-    cluster_matrix_act_norm_deptn::Matrix{Float64}
-    cluster_matrix_spline_norm_deptn::Matrix{Float64}
-end;
-
-function ClusteringData()
-    return ClusteringData(Matrix(rand(2,2)), Matrix(rand(2,2)),
-                            Matrix(rand(2,2)), Matrix(rand(2,2)),
-                            Matrix(rand(2,2)), Matrix(rand(2,2)),
-                            Matrix(rand(2,2)), Matrix(rand(2,2)),
-                            Matrix(rand(2,2)), Matrix(rand(2,2)))
-end;
-
 mutable struct ClusterResult
     num_clusters::Int
     cluster_sizes::Vector{Int}
     weighted_cluster_sizes::Vector{Float64}
     centers::Vector{Int64}
     assignments::Vector{Int}
+    dict::Dict
     _graph::Dict
 end;
 
 
 function ClusterResult()
-    return ClusterResult(-1, Int64[], Float64[], Int64[], Int64[], Dict())
-end;
-
-mutable struct ClusterGroup
-    aggregated_norm::ClusterResult
-    aggregated_ynorm::ClusterResult
-    detail_norm::ClusterResult
-    detail_ynorm::ClusterResult
-    spline_aggregated_norm::ClusterResult
-    spline_aggregated_ynorm::ClusterResult
-    spline_detail_norm::ClusterResult
-    spline_detail_ynorm::ClusterResult
-    act_norm_deptn::ClusterResult
-    spline_norm_deptn::ClusterResult
+    return ClusterResult(   -1, 
+                            Int64[], 
+                            Float64[], 
+                            Int64[], 
+                            Int64[],
+                            Dict(), 
+                            Dict())
 end;
 
 
-function ClusterGroup()
-    return ClusterGroup(ClusterResult(), ClusterResult(),
-                        ClusterResult(), ClusterResult(),
-                        ClusterResult(), ClusterResult(),
-                        ClusterResult(), ClusterResult(),
-                        ClusterResult(), ClusterResult())
-end;
-
-mutable struct UnivClusterResults
-    kmeans::ClusterGroup
-    hierarchical_clustering::ClusterGroup
-    dbscan_clustering::ClusterGroup
-    spectral_clustering::ClusterGroup
-    tsne_clustering::ClusterGroup
-    optimal_clustering::ClusterGroup
+mutable struct ClusteringMethod
+    raw_matrix::Matrix{Float64}
+    pca_matrix::Matrix{Float64}
+    distance_matrix::Matrix{Float64}
+    optimal_clustering::Int
+    kmeans::ClusterResult
+    hierarchical_clustering::ClusterResult
+    dbscan_clustering::ClusterResult
+    spectral_clustering::ClusterResult
 end;
 
 
-function UnivClusterResults()
-    return UnivClusterResults(ClusterGroup(), 
-                                ClusterGroup(), 
-                                ClusterGroup(), 
-                                ClusterGroup(), 
-                                ClusterGroup(), 
-                                ClusterGroup())
+function ClusteringMethod()
+    return ClusteringMethod(    Matrix(rand(2,2)),
+                                Matrix(rand(2,2)),
+                                Matrix(rand(2,2)),
+                                -1,
+                                ClusterResult(), 
+                                ClusterResult(), 
+                                ClusterResult(), 
+                                ClusterResult())
 end;
 
 
+mutable struct ClusteringGroup
+    aggregated_norm::ClusteringMethod
+    aggregated_ynorm::ClusteringMethod
+    detail_norm::ClusteringMethod
+    detail_ynorm::ClusteringMethod
+    spline_aggregated_norm::ClusteringMethod
+    spline_aggregated_ynorm::ClusteringMethod
+    spline_detail_norm::ClusteringMethod
+    spline_detail_ynorm::ClusteringMethod
+    act_norm_deptn::ClusteringMethod
+    spline_norm_deptn::ClusteringMethod
+end;
+
+
+function ClusteringGroup()
+    return ClusteringGroup(ClusteringMethod(), 
+                        ClusteringMethod(),
+                        ClusteringMethod(), 
+                        ClusteringMethod(),
+                        ClusteringMethod(), 
+                        ClusteringMethod(),
+                        ClusteringMethod(), 
+                        ClusteringMethod(),
+                        ClusteringMethod(), 
+                        ClusteringMethod())
+end;
 
 mutable struct UMData <: GendUnivData
     _file_path::String
@@ -295,8 +290,7 @@ mutable struct UMData <: GendUnivData
     dept_data_vector::Vector{UMDeptData}
     univ_sindy_matrix::Matrix{Float64}
     univ_bootstrap_df::DataFrame
-    clustering_data::ClusteringData
-    clustering_results::UnivClusterResults
+    clustering::ClusteringGroup
 end;
 
 function UMData(file_path::String, df::DataFrame) 
@@ -315,8 +309,7 @@ function UMData(file_path::String, df::DataFrame)
                     UMDeptData[],
                     Matrix(rand(2,2)),
                     DataFrame(),
-                    ClusteringData(),
-                    UnivClusterResults()
+                    ClusteringGroup()
     )
 end;
 
