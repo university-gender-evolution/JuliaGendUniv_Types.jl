@@ -245,6 +245,7 @@ function ClusteringMethod()
                                 ClusterResult(), 
                                 ClusterResult(), 
                                 ClusterResult(), 
+                                ClusterResult(), 
                                 ClusterResult())
 end;
 
