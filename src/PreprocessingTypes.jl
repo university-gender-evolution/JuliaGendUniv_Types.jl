@@ -206,7 +206,7 @@ mutable struct ClusterResult
     num_clusters::Int
     cluster_sizes::Vector{Int}
     weighted_cluster_sizes::Vector{Float64}
-    centers::Vector{Int64}
+    centers::Matrix{Float64}
     assignments::Vector{Int}
     dict::Dict
     _graph::Dict
@@ -217,7 +217,7 @@ function ClusterResult()
     return ClusterResult(   -1, 
                             Int64[], 
                             Float64[], 
-                            Int64[], 
+                            Matrix(rand(2,2)), 
                             Int64[],
                             Dict(), 
                             Dict())
@@ -230,6 +230,7 @@ mutable struct ClusteringMethod
     distance_matrix::Matrix{Float64}
     optimal_clustering::Int
     kmeans::ClusterResult
+    kmedoids::ClusterResult
     hierarchical_clustering::ClusterResult
     dbscan_clustering::ClusterResult
     spectral_clustering::ClusterResult
@@ -290,6 +291,7 @@ mutable struct UMData <: GendUnivData
     dept_data_vector::Vector{UMDeptData}
     univ_sindy_matrix::Matrix{Float64}
     univ_bootstrap_df::DataFrame
+    cluster_number::Int
     clustering::ClusteringGroup
 end;
 
@@ -300,7 +302,7 @@ function UMData(file_path::String, df::DataFrame)
                     "UNIVERSITY OF MICHIGAN",
                     0,
                     0,
-                    0,
+                    0, 
                     [string()],
                     [Dict{Symbol, Float64}() for i in 1:2],
                     Matrix(rand(3, 4)),
@@ -309,6 +311,7 @@ function UMData(file_path::String, df::DataFrame)
                     UMDeptData[],
                     Matrix(rand(2,2)),
                     DataFrame(),
+                    -1,
                     ClusteringGroup()
     )
 end;
