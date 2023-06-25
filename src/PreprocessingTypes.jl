@@ -1,6 +1,6 @@
 
 using DataFrames
-
+using Plots
 
 abstract type AbstractGendUnivDataConfiguration end;
 struct UM <: AbstractGendUnivDataConfiguration end;
@@ -209,7 +209,7 @@ mutable struct ClusterResult
     centers::Matrix{Float64}
     assignments::Vector{Int}
     dict::Dict
-    _graph::Dict
+    _graph::Plots.Plot
 end;
 
 
@@ -234,6 +234,7 @@ mutable struct ClusteringMethod
     hierarchical_clustering::ClusterResult
     dbscan_clustering::ClusterResult
     spectral_clustering::ClusterResult
+    affinity_propagation::ClusterResult
 end;
 
 
@@ -242,6 +243,7 @@ function ClusteringMethod()
                                 Matrix(rand(2,2)),
                                 Matrix(rand(2,2)),
                                 -1,
+                                ClusterResult(), 
                                 ClusterResult(), 
                                 ClusterResult(), 
                                 ClusterResult(), 

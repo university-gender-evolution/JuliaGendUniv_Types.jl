@@ -4,6 +4,7 @@ module JuliaGendUniv_Types
 
 using DataFrames
 using ComponentArrays
+using Plots
 
 include("PreprocessingTypes.jl");
 #include("OptimizationTypes.jl");
