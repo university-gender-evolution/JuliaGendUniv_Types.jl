@@ -1,7 +1,5 @@
 
 using DataFrames
-using Plots
-plotlyjs()
 
 abstract type AbstractGendUnivDataConfiguration end;
 struct UM <: AbstractGendUnivDataConfiguration end;
@@ -210,7 +208,7 @@ mutable struct ClusterResult
     centers::Matrix{Float64}
     assignments::Vector{Int}
     dict::Dict
-    _graph::Plots.Plot
+    _graph::Dict
 end;
 
 
