@@ -1,6 +1,7 @@
 
 using DataFrames
 using Plots
+plotlyjs()
 
 abstract type AbstractGendUnivDataConfiguration end;
 struct UM <: AbstractGendUnivDataConfiguration end;
