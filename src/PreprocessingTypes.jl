@@ -126,14 +126,35 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
                         "RESEARCH PROFESSOR EMERITUS/A", "CLIN PROF EMERITUS/A"]
 
 
-    data_cols = [:act_f1, :act_f2, :act_f3, :act_m1, :act_m2, :act_m3, :act_f, :act_m, :act_deptn]
-    spline_cols = [:spline_f1, :spline_f2, :spline_f3, :spline_m1, :spline_m2, :spline_m3, :spline_f, :spline_m, :spline_deptn]
-    boot_cols = [:boot_f1, :boot_f2, :boot_f3, :boot_m1, :boot_m2, :boot_m3, :boot_f, :boot_m, :boot_deptn]
-    optimization_cols = [:opt_f1, :opt_f2, :opt_f3, :opt_m1, :opt_m2, :opt_m3, :opt_f, :opt_m, :opt_deptn]
+    data_cols = [:act_f1, :act_f2, :act_f3, :act_m1, :act_m2, :act_m3, :act_f, :act_m, :act_deptn,
+                :act_fattr1, :act_fattr2, :act_fattr3, :act_mattr1, :act_mattr2, :act_mattr3,
+                :act_fhire1, :act_fhire2, :act_fhire3, :act_mhire1, :act_mhire2, :act_mhire3,
+                :act_fprom1, :act_fprom2, :act_mprom1, :act_mprom1]
+
+    spline_cols = [:spline_f1, :spline_f2, :spline_f3, :spline_m1, :spline_m2, 
+                :spline_m3, :spline_f, :spline_m, :spline_deptn,
+                :spline_fattr1, :spline_fattr2, :spline_fattr3, 
+                :spline_mattr1, :spline_mattr2, :spline_mattr3,
+                :spline_fhire1, :spline_fhire2, :spline_fhire3,
+                :spline_mhire1, :spline_mhire2, :spline_mhire3,
+                :spline_fprom1, :spline_fprom2, 
+                :spline_mprom1, :spline_mprom2]
+    
+    boot_cols = [:boot_f1, :boot_f2, :boot_f3, :boot_m1, :boot_m2, :boot_m3, 
+                :boot_f, :boot_m, :boot_deptn]
+    
+    optimization_cols = [:opt_f1, :opt_f2, :opt_f3, :opt_m1, :opt_m2, :opt_m3, 
+                        :opt_f, :opt_m, :opt_deptn]
 
     spline_deriv_cols = [:spline_deriv_f1, :spline_deriv_f2, :spline_deriv_f3, :spline_deriv_m1,
                     :spline_deriv_m2, :spline_deriv_m3, :spline_deriv_f, :spline_deriv_m,
-                    :spline_deriv_deptn]
+                    :spline_deriv_deptn,
+                    :spline_deriv_fattr1, :spline_deriv_fattr2, :spline_deriv_fattr3,
+                    :spline_deriv_mattr1, :spline_deriv_mattr2, :spline_deriv_mattr3,
+                    :spline_deriv_fhire1, :spline_deriv_fhire2, :spline_deriv_fhire3,
+                    :spline_deriv_mhire1, :spline_deriv_mhire2, :spline_deriv_mhire3,
+                    :spline_deriv_fprom1, :spline_deriv_fprom2,
+                    :spline_deriv_mprom1, :spline_deriv_mprom2]
 
     boot_deriv_cols = [:boot_deriv_f1, :boot_deriv_f2, :boot_deriv_f3, :boot_deriv_m1,
                     :boot_deriv_m2, :boot_deriv_m3, :boot_deriv_f, :boot_deriv_m,
