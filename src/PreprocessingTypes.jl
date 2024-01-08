@@ -141,7 +141,13 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
                 :spline_mprom1, :spline_mprom2]
     
     boot_cols = [:boot_f1, :boot_f2, :boot_f3, :boot_m1, :boot_m2, :boot_m3, 
-                :boot_f, :boot_m, :boot_deptn]
+                :boot_f, :boot_m, :boot_deptn,
+                :boot_fattr1, :boot_fattr2, :boot_fattr3,
+                :boot_mattr1, :boot_mattr2, :boot_mattr3,
+                :boot_fhire1, :boot_fhire2, :boot_fhire3,
+                :boot_mhire1, :boot_mhire2, :boot_mhire3,
+                :boot_fprom1, :boot_fprom2,
+                :boot_mprom1, :boot_mprom2]
     
     optimization_cols = [:opt_f1, :opt_f2, :opt_f3, :opt_m1, :opt_m2, :opt_m3, 
                         :opt_f, :opt_m, :opt_deptn]
@@ -158,7 +164,13 @@ function UMDeptData(df::DataFrame, first_year::Integer, num_years::Integer)
 
     boot_deriv_cols = [:boot_deriv_f1, :boot_deriv_f2, :boot_deriv_f3, :boot_deriv_m1,
                     :boot_deriv_m2, :boot_deriv_m3, :boot_deriv_f, :boot_deriv_m,
-                    :boot_deriv_deptn]
+                    :boot_deriv_deptn,
+                    :boot_deriv_fattr1, :boot_deriv_fattr2, :boot_deriv_fattr3,
+                    :boot_deriv_mattr1, :boot_deriv_mattr2, :boot_deriv_mattr3,
+                    :boot_deriv_fhire1, :boot_deriv_fhire2, :boot_deriv_fhire3,
+                    :boot_deriv_mhire1, :boot_deriv_mhire2, :boot_deriv_mhire3,
+                    :boot_deriv_fprom1, :boot_deriv_fprom2, 
+                    :boot_deriv_mprom1, :boot_deriv_mprom2]
 
     boot_norm_cols = [:boot_norm_f1, :boot_norm_f2, :boot_norm_f3, :boot_norm_m1, 
                     :boot_norm_m2, :boot_norm_m3, :boot_norm_f, :boot_norm_m, 
