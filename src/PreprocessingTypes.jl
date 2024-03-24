@@ -314,6 +314,7 @@ end;
 mutable struct UMData <: GendUnivData
     _file_path::String
     _raw_df::DataFrame
+    _raw_df_backup::DataFrame
     univ_name::String
     first_year::Integer
     final_year::Integer
@@ -333,6 +334,7 @@ end;
 function UMData(file_path::String, df::DataFrame) 
 
     return UMData(file_path,
+                    df,
                     df,
                     "UNIVERSITY OF MICHIGAN",
                     0,
